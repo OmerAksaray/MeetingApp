@@ -1,0 +1,42 @@
+@model List<UserInfo>
+@{
+    ViewBag.Title="Katilim Listesi";
+    
+}
+<main class="text-center">
+<h1 class="h4">Toplanti Katilim Listesi</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Ad</td>
+            <td>E-mail</td>
+            <td>Katilim Durumu</td>
+            <td>Detay</td>
+        </tr>
+    </thead>
+    @{int i=0;
+    
+    }
+    @foreach(var key in Model){
+        var durum=key.WillAttend==true ? "Katılıyor":"Katılmıyor";
+        var className=key.WillAttend==true? "table-success":"table-danger";
+        if(key.WillAttend==true){
+            i++;
+        }
+        <tr class="@className">
+            <td>
+                @key.Name
+            </td>
+            <td>@durum</td>
+            <td><a href="/meeting/details/@key.Id" class="btn btn-sm btn-primary">Detay</a></td>
+        </tr>
+    }
+    
+    
+
+</table>
+<div class="card">
+    <div class="card-body">
+        <span>Toplam Katılımcı sayısı: @i</span>
+    </div>
+</div></main>

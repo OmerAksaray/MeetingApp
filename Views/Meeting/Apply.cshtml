@@ -1,0 +1,32 @@
+@model UserInfo
+@{
+    ViewBag.Title="Katilim Formu";
+    
+}
+<h1 class="h4 text-center">Toplanti Katilim Formu</h1>
+<form method="post" action="/Meeting/Apply">
+    <div asp-validation-summary="All"></div>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">İsim:</label>
+        <input asp-for="Name" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Phone" class="form-label">Telefon Numarası:</label>
+        <input asp-for="Phone" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">E-mail:</label>
+        <input asp-for="Email" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="WillAttend" class="form-label">Katılım Durumu:</label>
+        <select asp-for="WillAttend" class="form-select">
+            <option value="">Seçiniz.</option>
+            <option value="true">Evet, katılım sağlayacağım.</option>
+            <option value="false">Hayir, katılım sağlamayacağım.</option>
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit">
+        Kaydet
+    </button>
+</form>
